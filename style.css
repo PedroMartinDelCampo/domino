@@ -1,0 +1,13 @@
+body {
+	padding: 100px;
+}
+
+form {
+	padding: 20px;
+	border: solid 1px darkgreen;
+	text-align: center;
+}
+
+input {
+	width: 100%;
+}
