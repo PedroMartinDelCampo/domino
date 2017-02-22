@@ -6,11 +6,17 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<form>
+		<form onsubmit="initGame(); return false" id="new_game_form">
 			<h1>Nuevo juego</h1>
-			<label for="players">Número de jugadores</label>
-			<input type="number" min="2" max="4" placeholder="# de jugadores" />
+			<label for="num_players">Número de jugadores</label>
+			<input type="number" min="2" max="4" placeholder="# de jugadores"
+				id="num_players" />
 			<button type="submit">Nuevo juego</button>
 		</form>
+
+		<script src="js/board.js"></script>
+		<script src="js/player.js"></script>
+		<script src="js/tile.js"></script>
+		<script src="js/newGame.js"></script>
 	</body>
 </html>
