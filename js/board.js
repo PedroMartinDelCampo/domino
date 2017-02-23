@@ -8,3 +8,17 @@ function Board() {
 		}
 	}
 }
+
+Board.prototype.shuffle = function() {
+	for (var i = 0; i < this.tiles.length; i++) {
+		var x = Math.floor(Math.random() * (this.tiles.length - 1));
+		var tmp = this.tiles[x];
+		// Swap positions
+		this.tiles[x] = this.tiles[i];
+		this.tiles[i] = tmp;
+	}
+};
+
+Board.prototype.takeTile = function() {
+	return this.tiles.pop();
+};

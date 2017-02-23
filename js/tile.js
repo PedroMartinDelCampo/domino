@@ -8,7 +8,7 @@ Tile.prototype.isCompatibleWith = function(tile) {
 };
 
 Tile.prototype.isDouble = function() {
-	return this.x == this.y == y;
+	return this.x == this.y;
 };
 
 Tile.prototype.sum = function() {

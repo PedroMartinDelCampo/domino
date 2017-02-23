@@ -1,9 +1,16 @@
-function Player(turn) {
-	this.turn = turn;
+function Player() {
+	this.turn = 0;
+	this.tiles = [];
 }
 
-Player.prototype.takeTile = function() {
-	// Takes a tile from the heap of tiles
+Player.prototype.doubles = function() {
+	return this.tiles.filter(function(tile) {
+		return tile.isDouble();
+	});
+}
+
+Player.prototype.takeTile = function(tile) {
+	this.tiles.push(tile);
 };
 
 Player.prototype.performMovement = function() {
