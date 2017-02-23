@@ -7,6 +7,21 @@ Player.prototype.doubles = function() {
 	return this.tiles.filter(function(tile) {
 		return tile.isDouble();
 	});
+};
+
+Player.prototype.maxTile = function() {
+	return this.tiles.reduce(function(a, b) {
+		if (a.isDouble()) {
+			if (b.isDouble()) {
+				return a.x > b.x ? a : b;
+			}
+			return a;
+		}
+		if (b.isDouble()) {
+			return b;
+		}
+		return a.x > b.x ? a : b;
+	});
 }
 
 Player.prototype.takeTile = function(tile) {

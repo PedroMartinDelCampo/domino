@@ -1,3 +1,29 @@
+//
+//                       _oo0oo_
+//                      o8888888o
+//                      88" . "88
+//                      (| -_- |)
+//                      0\  =  /0
+//                    ___/`---'\___
+//                  .' \\|     |// '.
+//                 / \\|||  :  |||// \
+//                / _||||| -:- |||||- \
+//               |   | \\\  -  /// |   |
+//               | \_|  ''\---/''  |_/ |
+//               \  .-\__  '-'  ___/-. /
+//             ___'. .'  /--.--\  `. .'___
+//          ."" '<  `.___\_<|>_/___.' >' "".
+//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
+//         \  \ `_.   \_ __\ /__ _/   .-` /  /
+//     =====`-.____`.___ \_____/___.-`___.-'=====
+//                       `=---='
+//
+//
+//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//
+//               佛祖保佑         永无BUG
+// Esto bendecira nuestro código para que no tenga bugs
+
 function initGame() {
 	var numPlayers = document.getElementById('num_players').value;
 	if (numPlayers < 2 || numPlayers > 4) {
@@ -20,20 +46,14 @@ function createPlayers(board, numPlayers) {
 		}
 		players.push(player);
 	}
-	return players;
+	return assignTurns(players);
 }
 
 function assignTurns(players) {
 	players.sort(function(player1, player2) {
-		// TODO: This inner function should return -1 if player1 will play after player2,
-		//			1 if player1 will player before player2 or 0 if they have the same
-		//			ammount of points an no doubles
-		var db1 = player1.doubles();
-		var db2 = player2.doubles();
-		if (db1.length) {
-			if (db2.length) {
-				return maxdb1.x - maxdb2.x;
-			}
-		}
+		var max1 = player1.maxTile();
+		var max2 = player2.maxTile();
+		return max2.x - max1.x;
 	});
+	return players;
 }
