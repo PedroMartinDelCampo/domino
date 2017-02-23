@@ -6,11 +6,11 @@ function initGame() {
 	}
 	var board = new Board();
 	board.shuffle();
-	var players = createPlayers();
+	var players = createPlayers(board, numPlayers);
 	console.log(players);
 }
 
-function createPlayers() {
+function createPlayers(board, numPlayers) {
 	var players = [];
 	for (var i = 0; i < numPlayers; i++) {
 		var player = new Player();
@@ -25,6 +25,13 @@ function createPlayers() {
 
 function assignTurns(players) {
 	players.sort(function(player1, player2) {
+		var db1 = player1.doubles();
+		var db2 = player2.doubles();
+		if (db1.length) {
+			if (db2.length) {
+
+			}
+		}
 		// TODO: This inner function should return -1 if player1 will play after player2,
 		//			1 if player1 will player before player2 or 0 if they have the same
 		//			ammount of points an no doubles
