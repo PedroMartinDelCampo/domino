@@ -35,3 +35,10 @@ Player.prototype.performMovement = function() {
 Player.prototype.doMovement = function() {
 	// Generates a movement
 };
+
+//tries to set a selected tile, if succesful the tiles array is updated
+Player.prototype.setTile = function(tile, board) {
+	if(board.trySetTile(tile)){
+		this.tiles.splice(this.tiles.indexOf(tile),1);
+	}
+};

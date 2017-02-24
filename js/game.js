@@ -38,6 +38,7 @@ function initGame() {
 	var board = new Board();
 	board.shuffle();
 	var players = createPlayers(board, numPlayers);
+	selectFirstTile(players);
 	return players;
 }
 
@@ -77,4 +78,9 @@ function takeTurn() {
 		html += tile.view();
 	});
 	display.innerHTML = html;
+}
+
+function setFirstTile(players, board){
+	var firstTile = players[0].maxTile();
+	board.setFirstTile(firstTile);
 }
