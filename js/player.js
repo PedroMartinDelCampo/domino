@@ -35,3 +35,9 @@ Player.prototype.performMovement = function() {
 Player.prototype.doMovement = function() {
 	// Generates a movement
 };
+
+Player.prototype.setTile = function(tile, board) {
+	if(board.trySetTile(tile)){
+		this.tiles.splice(this.tiles.indexOf(tile),1);
+	}
+};
