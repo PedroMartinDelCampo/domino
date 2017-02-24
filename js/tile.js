@@ -14,3 +14,7 @@ Tile.prototype.isDouble = function() {
 Tile.prototype.sum = function() {
 	return this.x + this.y;
 };
+
+Tile.prototype.view = function() {
+	return '<img src="img/tile_' + this.x + '_' + this.y + '.png">';
+};
