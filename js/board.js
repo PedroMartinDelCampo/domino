@@ -1,5 +1,6 @@
 function Board() {
 	this.tiles = [];
+	this.tilesOnGame = [];
 	for (var i = 0; i <= 6; i++) {
 		for (var j = i; j <= 6; j++) {
 			this.tiles.push(
@@ -21,4 +22,8 @@ Board.prototype.shuffle = function() {
 
 Board.prototype.takeTile = function() {
 	return this.tiles.pop();
+};
+
+Board.prototype.setFirstTile = function (tile) {
+	tilesOnGame.push(tile);
 };
