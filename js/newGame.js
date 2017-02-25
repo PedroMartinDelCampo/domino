@@ -34,7 +34,7 @@ function initGame() {
 	board.shuffle();
 	var players = createPlayers(board, numPlayers);
 	session('players', players);
-	selectFirstTile(players);
+	selectFirstTile(players, board);
 }
 
 function createPlayers(board, numPlayers) {
@@ -62,5 +62,6 @@ function assignTurns(players) {
 
 function setFirstTile(players, board){
 	var firstTile = players[0].maxTile();
-	board.setFirstTile(firstTile);
+	this.board.setFirstTile(firstTile);
+
 }
