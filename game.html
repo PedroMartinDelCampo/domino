@@ -4,11 +4,15 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body onload="setUpGame()">
+		<div id="menu">
+			<button onclick="setUpGame();">Nuevo juego</button>
+			<a href="index.html">Regresar</a>
+		</div>
 		<div>
 			<strong id="turn_label"></strong>
 		</div>
 		<hr>
-		<div>
+		<div id="board_container">
 			<strong>Tablero</strong>
 			<div id="board_view"></div>
 		</div>
@@ -32,6 +36,7 @@
 		<script src="js/tile.js"></script>
 		<script src="js/board.js"></script>
 		<script src="js/player.js"></script>
+		<script src="js/newGame.js"></script>
 		<script src="js/game.js"></script>
 	</body>
 </html>

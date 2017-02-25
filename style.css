@@ -4,13 +4,14 @@ body {
 
 form {
 	padding: 20px;
-	border: solid 1px darkgreen;
+	border: dashed 1px darkgreen;
 	text-align: center;
 }
 
 input[type=number] {
 	width: 200px;
 	margin: 10px;
+	border: solid 1px darkgreen;
 }
 
 button {
@@ -38,17 +39,19 @@ button:hover {
 
 #board_view .tile {
 	transform: rotate(90deg);
-	margin-right: 33px;
+	margin-right: 38px;
 }
 
 #board_view .tile-inverted {
 	width: 33px;
 	transform: rotate(270deg);
-	margin-right: 33px;
+	margin-right: 38px;
 }
 
 #board_view {
-	width: 100%;
+	/* 38px * 28 tiles */ 
+	width: 1988px;
+	padding: 30px;
 	overflow-x: auto;
 }
 
@@ -61,11 +64,23 @@ button:hover {
 	display: none;
 }
 
-div {
+div:not(#board_container *) {
 	text-align: center;
 }
 
 label {
 	font-weight: bold;
 	font-size: 16px;
+}
+
+#menu {
+	text-align: left;
+}
+
+a {
+	color: darkgreen;
+}
+
+h1 {
+	font-family: "Arial Black";
 }

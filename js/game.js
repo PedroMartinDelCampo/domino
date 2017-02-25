@@ -76,6 +76,9 @@ function assignTurns() {
 }
 
 function takeTurn() {
+	if (player && !player.tiles.length) {
+		endGame(true);
+	}
 	if (gameEnded) {
 		alert('El juego ha terminado');
 		return;
@@ -127,11 +130,7 @@ function putTile(tileView) {
 	var result = board.trySetTile(player, tile);
 	if (result) {
 		numPasses = 0;
-		if (!player.tiles.length) {
-			endGame(true);
-		} else {
-			takeTurn();
-		}
+		takeTurn();
 	} else {
 		alert('Jugada no válida');
 	}
@@ -144,6 +143,7 @@ function takeTile() {
 	}
 	var tile = board.takeTile();
 	if (tile) {
+		tile.active = true;
 		player.tiles.push(tile);
 		update();
 	} else {
@@ -154,7 +154,9 @@ function takeTile() {
 function endGame(success) {
 	gameEnded = true;
 	if (success) {
-		winnerView.innerHTML = '<hr><span><b>Ganador: </b>' + winner.label + '</span>';
+		var winner = turn == 0 ? players[numPlayers-1] : players[turn-1];
+		winnerView.innerHTML = '<hr><span><b>Ganador: </b>' + player.label + '</span>';
+		winner.className = '';
 	} else {
 		var sums = players.map(function(p, i) {
 			return {
