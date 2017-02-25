@@ -1,29 +1,3 @@
-//
-//                       _oo0oo_
-//                      o8888888o
-//                      88" . "88
-//                      (| -_- |)
-//                      0\  =  /0
-//                    ___/`---'\___
-//                  .' \\|     |// '.
-//                 / \\|||  :  |||// \
-//                / _||||| -:- |||||- \
-//               |   | \\\  -  /// |   |
-//               | \_|  ''\---/''  |_/ |
-//               \  .-\__  '-'  ___/-. /
-//             ___'. .'  /--.--\  `. .'___
-//          ."" '<  `.___\_<|>_/___.' >' "".
-//         | | :  `- \`.;`\ _ /`;.`/ - ` : | |
-//         \  \ `_.   \_ __\ /__ _/   .-` /  /
-//     =====`-.____`.___ \_____/___.-`___.-'=====
-//                       `=---='
-//
-//
-//     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-//
-//               佛祖保佑         永无BUG
-// Esto bendecira nuestro código para que no tenga bugs
-
 function initGame() {
 	var numPlayers = document.getElementById('num_players').value;
 	if (numPlayers < 2 || numPlayers > 4) {
@@ -63,5 +37,5 @@ function assignTurns(players) {
 function setFirstTile(players, board){
 	var firstTile = players[0].maxTile();
 	this.board.setFirstTile(firstTile);
-
+	session('numPlayers', numPlayers);
 }
