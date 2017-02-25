@@ -4,7 +4,7 @@ function Board() {
 	for (var i = 0; i <= 6; i++) {
 		for (var j = i; j <= 6; j++) {
 			this.tiles.push(
-				new Tile(i, j)
+				new Tile(i, j, false, false)
 			);
 		}
 	}
@@ -21,37 +21,76 @@ Board.prototype.shuffle = function() {
 };
 
 Board.prototype.takeTile = function() {
-	return this.tiles.pop();
+	return this.tiles.length ? this.tiles.pop() : false;
 };
 
-Board.prototype.setFirstTile = function (tile) {
+Board.prototype.setFirstTile = function (player, tile) {
+	tile.active = false;
 	this.tilesOnGame.push(tile);
+	player.tiles.splice(player.tiles.indexOf(tile), 1);
 };
 
-Board.prototype.trySetTile = function (tile) {
-	var position tileIsCompatible(tile);
-	if(position){
-		setTile(tile,position);
-		return 1;
-	}
-	return 0;
+Board.prototype.trySetTile = function (player, tile) {
+	console.log(this);
+	var move = this.performMove(tile);
+	this.setTile(player, tile, move);
+	return move;
 };
 
-Board.prototype.setTile = function (tile, position){
-	if(position-1==0) {
-		this.tilesOnGame.unshift(tile);
+Board.prototype.setTile = function (player, tile, move){
+	if (move === false) return false;
+	console.log(move);
+	player.tiles.splice(player.tiles.indexOf(tile), 1);
+	if(move.position === 0) {
+		this.tilesOnGame.unshift(move.tile);
 	} else {
-		this.tilesOnGame.push(tile);
+		this.tilesOnGame.push(move.tile);
 	}
 };
 
-Board.prototype.tileIsCompatible = function (tile) {
-	if (tile.isCompatibleWith(this.tilesOnGame[0])){
-		return 1;
+Board.prototype.performMove = function (tile) {
+	var x = this.tilesOnGame[0].isCompatibleWith(tile, 'y');
+	if (x) {
+		if (x == 'y') {
+			var retVal = tile.invert();
+			retVal.active = false;
+			return {
+				tile: retVal,
+				position: 0
+			};
+		}
+		var retVal = tile;
+		retVal.active = false;
+		return {
+			tile: retVal,
+			position: 0
+		};
 	}
-	if(tile.isCompatibleWith(this.tilesOnGame[this.tilesOnGame.length-1])) {
-		return this.tilesOnGame.length;
+	var lastPosition = this.tilesOnGame.length-1;
+	var y = this.tilesOnGame[lastPosition].isCompatibleWith(tile, 'x');
+	if(y) {
+		if (y == 'x') {
+			var retVal = tile.invert();
+			retVal.active = false;
+			return {
+				tile: retVal,
+				position: lastPosition
+			};
+		}
+		var retVal = tile;
+		retVal.active = false;
+		return {
+			tile: tile,
+			position: lastPosition
+		};
 	}
-
-	return 0;
+	return false;
 };
+
+Board.prototype.view = function() {
+	var html = '';
+	this.tilesOnGame.forEach(function(tile) {
+		html += tile.view();
+	});
+	return html;
+}

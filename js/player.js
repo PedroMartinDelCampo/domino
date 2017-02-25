@@ -1,5 +1,5 @@
-function Player() {
-	this.turn = 0;
+function Player(label) {
+	this.label = label;
 	this.tiles = [];
 }
 
@@ -42,3 +42,18 @@ Player.prototype.setTile = function(tile, board) {
 		this.tiles.splice(this.tiles.indexOf(tile),1);
 	}
 };
+
+Player.prototype.view = function() {
+	var html = '';
+	this.tiles.forEach(function(tile) {
+		html += tile.view();
+	});
+	return html;
+};
+
+Player.prototype.sum = function() {
+	var initial = 0;
+	return this.tiles.reduce(function(accumulated, tile) {
+		return accumulated + tile.sum();
+	}, initial);
+}

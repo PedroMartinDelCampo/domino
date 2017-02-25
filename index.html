@@ -6,11 +6,13 @@
 		<link rel="stylesheet" href="style.css">
 	</head>
 	<body>
-		<form onsubmit="initGame(); return false; " id="new_game_form" action="game.html">
+		<form onsubmit="initGame();" id="new_game_form" action="game.html">
 			<h1>Nuevo juego</h1>
 			<label for="num_players">Número de jugadores</label>
+			<br>
 			<input type="number" min="2" max="4" placeholder="# de jugadores" required
 				id="num_players" />
+			<br>
 			<button type="submit">Nuevo juego</button>
 		</form>
 

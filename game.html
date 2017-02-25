@@ -1,13 +1,33 @@
 <html>
 	<head>
 		<title>Dominó</title>
+		<link rel="stylesheet" href="style.css">
 	</head>
 	<body onload="setUpGame()">
-		
-		<div id="my_tiles"></div>
-
-		<button onclick="takeTurn()">Pasar</button>
-
+		<div>
+			<strong id="turn_label"></strong>
+		</div>
+		<hr>
+		<div>
+			<strong>Tablero</strong>
+			<div id="board_view"></div>
+		</div>
+		<hr>
+		<div>
+			<strong>Tus fichas</strong>
+			<div id="my_tiles"></div>
+		</div>
+		<hr>
+		<div>
+			<button onclick="pass()">Pasar</button>
+			<button onclick="takeTile()">Tomar ficha</button>
+		</div>
+		<div id="closed_game" class="hidden">
+			<hr>
+			<span>El juego se ha cerrado</span>
+		</div>
+		<div id="winner_label" class="hidden"></div>
+		<div id="sums" class="hidden"></div>
 		<script src="js/util.js"></script>
 		<script src="js/tile.js"></script>
 		<script src="js/board.js"></script>

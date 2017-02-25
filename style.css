@@ -8,6 +8,64 @@ form {
 	text-align: center;
 }
 
-input {
+input[type=number] {
+	width: 200px;
+	margin: 10px;
+}
+
+button {
+	border: solid 1px darkgreen;
+	background-color: white;
+	color: darkgreen;
+	padding: 10px 20px;
+	cursor: pointer;
+	margin: 10px;
+}
+
+button:hover {
+	border: darkgreen;
+	background-color: darkgreen;
+	color: white;
+}
+
+.tile {
+	width: 33px;
+}
+
+#my_tiles .tile {
+	cursor: pointer;
+}
+
+#board_view .tile {
+	transform: rotate(90deg);
+	margin-right: 33px;
+}
+
+#board_view .tile-inverted {
+	width: 33px;
+	transform: rotate(270deg);
+	margin-right: 33px;
+}
+
+#board_view {
 	width: 100%;
+	overflow-x: auto;
+}
+
+.active:hover {
+	border: solid 2px lightgreen;
+	border-radius: 5px;
+}
+
+.hidden {
+	display: none;
+}
+
+div {
+	text-align: center;
+}
+
+label {
+	font-weight: bold;
+	font-size: 16px;
 }
