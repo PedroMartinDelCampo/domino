@@ -4,4 +4,5 @@ function newGame() {
 		alert('Sólo se permiten entre 2 y 4 jugadores');
 		return false;
 	}
+	session('numPlayers', numPlayers);
 }

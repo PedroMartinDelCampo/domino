@@ -153,6 +153,7 @@ function takeTile() {
 
 function endGame(success) {
 	gameEnded = true;
+	update();
 	if (success) {
 		var winner = turn == 0 ? players[numPlayers-1] : players[turn-1];
 		winnerView.innerHTML = '<hr><span><b>Ganador: </b>' + player.label + '</span>';
